@@ -1873,16 +1873,4 @@ document.addEventListener('keydown',e=>{
   if(e.key==='Escape')document.querySelectorAll('.modal-overlay.open').forEach(m=>m.classList.remove('open'));
 });
 
-// ── INIT ──────────────────────────────────────────────────────────────────────
-applyTheme();
-(async()=>{
-  const{data:{session}}=await sb.auth.getSession();
-  if(session?.user){currentSbUser=session.user;await bootApp(session.user)}
-  else document.getElementById('auth-screen').classList.remove('hidden');
-  sb.auth.onAuthStateChange(async(event,session)=>{
-    if(event==='SIGNED_IN'&&session&&!currentSbUser){currentSbUser=session.user;await bootApp(session.user)}
-    if(event==='SIGNED_OUT'){currentSbUser=null;document.getElementById('auth-screen').classList.remove('hidden')}
-  });
-})();
-
 </html>
