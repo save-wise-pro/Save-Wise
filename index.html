@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Savewise Pro — Money & Goals Tracker</title>
+<!-- Google AdSense — replace ca-pub-XXXXXXXXXX with your Publisher ID -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
 <style>
@@ -102,7 +104,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .streak-pill strong{display:block;font-size:22px;color:var(--text);font-weight:500}
 .theme-btn{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:var(--radius-sm);border:1px solid var(--border);background:transparent;color:var(--text2);font-size:13px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .15s}
 .theme-btn:hover{background:var(--surface2)}
-.main{margin-left:220px;padding:2.5rem 2rem;max-width:960px;width:100%;min-height:100vh}
+.main{margin-left:220px;padding:2.5rem 2rem;max-width:960px;width:100%;min-height:100vh;padding-bottom:90px}
 
 /* PAGES */
 .page{display:none}
@@ -416,7 +418,17 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .onboard-dot{width:8px;height:8px;border-radius:50%;background:var(--border2)}
 .onboard-dot.active{background:var(--text)}
 
-/* RESPONSIVE */
+/* AD BANNER FOOTER */
+.ad-footer{position:fixed;bottom:0;left:0;right:0;z-index:150;background:var(--surface);border-top:1px solid var(--border);display:flex;align-items:center;justify-content:center;padding:6px 0;min-height:66px}
+.ad-footer .ad-label{position:absolute;top:3px;left:8px;font-size:9px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px}
+.ad-footer-placeholder{display:flex;align-items:center;justify-content:center;width:320px;height:50px;background:var(--surface2);border:1px dashed var(--border2);border-radius:var(--radius-sm);font-size:11px;color:var(--text3)}
+@media(min-width:701px){
+  .ad-footer{left:220px}
+  .ad-footer .ad-label{left:228px}
+}
+@media(max-width:700px){
+  .main{padding-bottom:140px}
+}
 @media(max-width:700px){
   .sidebar{width:0;overflow:hidden;padding:0}
   .main{margin-left:0;padding:1.25rem 1rem;padding-bottom:80px}
@@ -1716,5 +1728,16 @@ applyTheme();
   });
 })();
 </script>
+<!-- GOOGLE ADSENSE FOOTER BANNER -->
+<div class="ad-footer" id="ad-footer">
+  <span class="ad-label">Advertisement</span>
+  <!-- Replace ca-pub-XXXXXXXXXX with your Publisher ID and XXXXXXXXXX with your Ad Slot ID -->
+  <ins class="adsbygoogle"
+    style="display:inline-block;width:320px;height:50px"
+    data-ad-client="ca-pub-XXXXXXXXXX"
+    data-ad-slot="XXXXXXXXXX">
+  </ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
 </body>
 </html>
