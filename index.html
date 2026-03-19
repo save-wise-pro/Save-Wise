@@ -407,6 +407,64 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .toast{position:fixed;bottom:1.5rem;right:1.5rem;background:var(--text);color:var(--bg);padding:10px 18px;border-radius:var(--radius-sm);font-size:13px;z-index:999;opacity:0;transform:translateY(8px);transition:all .25s;pointer-events:none;max-width:300px}
 .toast.show{opacity:1;transform:translateY(0)}
 
+/* AI COACH */
+.coach-chat{display:flex;flex-direction:column;gap:12px;margin-bottom:1.5rem;max-height:420px;overflow-y:auto;padding:1rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius)}
+.coach-msg{display:flex;gap:10px;align-items:flex-start}
+.coach-msg.user{flex-direction:row-reverse}
+.coach-bubble{max-width:80%;padding:10px 14px;border-radius:var(--radius);font-size:14px;line-height:1.6}
+.coach-bubble.ai{background:var(--surface2);color:var(--text)}
+.coach-bubble.user{background:var(--text);color:var(--bg)}
+.coach-avatar{width:32px;height:32px;border-radius:50%;background:var(--blue-bg);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.coach-input-row{display:flex;gap:8px}
+.coach-input-row input{flex:1;padding:10px 14px;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--surface);color:var(--text);font-size:14px;font-family:'DM Sans',sans-serif}
+.coach-input-row input:focus{outline:none;border-color:var(--text)}
+.coach-suggestions{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:1rem}
+.coach-suggest-btn{font-size:12px;padding:6px 12px;border-radius:20px;border:1px solid var(--border);background:var(--surface);color:var(--text2);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .15s}
+.coach-suggest-btn:hover{background:var(--surface2);color:var(--text)}
+.coach-typing{display:flex;gap:4px;align-items:center;padding:10px 14px;background:var(--surface2);border-radius:var(--radius);width:fit-content}
+.coach-dot{width:6px;height:6px;border-radius:50%;background:var(--text3);animation:blink 1.2s infinite}
+.coach-dot:nth-child(2){animation-delay:.2s}
+.coach-dot:nth-child(3){animation-delay:.4s}
+@keyframes blink{0%,80%,100%{opacity:.2}40%{opacity:1}}
+
+/* CHALLENGES */
+.challenge-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin-bottom:2rem}
+.challenge-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;position:relative;overflow:hidden}
+.challenge-card.active-challenge{border-color:var(--blue);border-width:2px}
+.challenge-card.completed-challenge{border-color:var(--green);border-width:2px}
+.challenge-emoji{font-size:32px;margin-bottom:10px}
+.challenge-name{font-size:15px;font-weight:500;margin-bottom:4px}
+.challenge-desc{font-size:13px;color:var(--text2);margin-bottom:12px;line-height:1.5}
+.challenge-meta{display:flex;justify-content:space-between;font-size:12px;color:var(--text3);margin-bottom:10px}
+.challenge-progress{height:6px;background:var(--surface2);border-radius:3px;overflow:hidden;margin-bottom:12px}
+.challenge-fill{height:100%;background:var(--blue);border-radius:3px;transition:width .5s}
+.challenge-fill.done{background:var(--green)}
+.challenge-actions{display:flex;gap:8px}
+
+/* INVESTMENTS */
+.invest-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:2rem}
+.invest-list{display:flex;flex-direction:column;gap:10px;margin-bottom:2rem}
+.invest-item{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;display:flex;align-items:center;gap:14px}
+.invest-icon{width:44px;height:44px;border-radius:50%;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.invest-info{flex:1}
+.invest-name{font-size:15px;font-weight:500}
+.invest-type{font-size:12px;color:var(--text3);margin-top:2px}
+.invest-right{text-align:right}
+.invest-value{font-size:16px;font-weight:500}
+.invest-gain{font-size:12px;margin-top:2px}
+.invest-gain.pos{color:var(--green)}
+.invest-gain.neg{color:var(--red)}
+
+/* RECEIPT SCANNER */
+.scanner-drop{border:2px dashed var(--border2);border-radius:var(--radius);padding:3rem 2rem;text-align:center;cursor:pointer;transition:all .2s;margin-bottom:1.5rem;background:var(--surface)}
+.scanner-drop:hover,.scanner-drop.drag-over{border-color:var(--text);background:var(--surface2)}
+.scanner-drop-icon{font-size:48px;margin-bottom:12px}
+.scanner-drop h3{font-size:16px;font-weight:500;margin-bottom:6px}
+.scanner-drop p{font-size:13px;color:var(--text3)}
+.scanner-result{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;margin-bottom:1rem}
+.scanner-result h3{font-size:14px;font-weight:500;margin-bottom:1rem;color:var(--green)}
+.scanner-preview{width:100%;max-height:200px;object-fit:contain;border-radius:var(--radius-sm);margin-bottom:1rem;border:1px solid var(--border)}
+
 /* ONBOARDING */
 .onboard-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:5000;display:flex;align-items:center;justify-content:center}
 .onboard-overlay.hidden{display:none}
@@ -589,6 +647,11 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
   <button class="nav-item" onclick="showPage('report',this)"><span class="nav-icon">📊</span>Weekly Report</button>
   <button class="nav-item" onclick="showPage('milestones',this)"><span class="nav-icon">◆</span>Milestones</button>
   <button class="nav-item" onclick="showPage('tips',this)"><span class="nav-icon">✦</span>Tips</button>
+  <div class="nav-section">New Features</div>
+  <button class="nav-item" onclick="showPage('coach',this)"><span class="nav-icon">🤖</span>AI Coach</button>
+  <button class="nav-item" onclick="showPage('challenges',this)"><span class="nav-icon">🎯</span>Challenges</button>
+  <button class="nav-item" onclick="showPage('investments',this)"><span class="nav-icon">💹</span>Investments</button>
+  <button class="nav-item" onclick="showPage('scanner',this)"><span class="nav-icon">📸</span>Receipt Scan</button>
   <button class="nav-item" onclick="showPage('settings',this)"><span class="nav-icon">⚙</span>Settings</button>
   <div class="nav-section">Legal</div>
   <button class="nav-item" onclick="showPage('privacy',this)"><span class="nav-icon">🔒</span>Privacy Policy</button>
@@ -954,6 +1017,96 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
   </div>
 </div>
 
+<!-- AI COACH PAGE -->
+<div class="page" id="page-coach">
+  <div class="topbar"><div><h1>AI Spending Coach</h1><div class="date">Powered by Claude AI</div></div></div>
+  <div class="coach-suggestions">
+    <button class="coach-suggest-btn" onclick="askCoach('Analyse my spending this month')">📊 Analyse my spending</button>
+    <button class="coach-suggest-btn" onclick="askCoach('How can I save more money?')">💰 How to save more?</button>
+    <button class="coach-suggest-btn" onclick="askCoach('Am I on track with my goals?')">🎯 Check my goals</button>
+    <button class="coach-suggest-btn" onclick="askCoach('Where am I overspending?')">⚠️ Overspending areas</button>
+    <button class="coach-suggest-btn" onclick="askCoach('Give me a personalised saving plan')">📋 Saving plan</button>
+    <button class="coach-suggest-btn" onclick="askCoach('What is my financial health like?')">❤️ Financial health</button>
+  </div>
+  <div class="coach-chat" id="coach-chat">
+    <div class="coach-msg"><div class="coach-avatar">🤖</div><div class="coach-bubble ai">Hi! I'm your AI Spending Coach. I can analyse your transactions, goals and budgets to give you personalised financial advice. What would you like to know?</div></div>
+  </div>
+  <div class="coach-input-row">
+    <input id="coach-input" placeholder="Ask me anything about your finances…" onkeydown="if(event.key==='Enter')sendCoachMsg()">
+    <button class="add-btn" onclick="sendCoachMsg()">Send →</button>
+  </div>
+</div>
+
+<!-- SAVING CHALLENGES PAGE -->
+<div class="page" id="page-challenges">
+  <div class="topbar"><div><h1>Saving Challenges</h1><div class="date">Make saving fun</div></div></div>
+  <div class="section-header"><h2>Active Challenges</h2></div>
+  <div class="challenge-grid" id="active-challenges-list"></div>
+  <div class="section-header"><h2>Available Challenges</h2></div>
+  <div class="challenge-grid" id="challenges-list"></div>
+</div>
+
+<!-- INVESTMENTS PAGE -->
+<div class="page" id="page-investments">
+  <div class="topbar"><div><h1>Investment Tracker</h1><div class="date">Track your wealth growth</div></div><button class="add-btn" onclick="openInvestModal()">+ Add Investment</button></div>
+  <div class="invest-summary">
+    <div class="metric"><div class="label">Total Invested</div><div class="val" id="invest-total">₹0</div></div>
+    <div class="metric"><div class="label">Current Value</div><div class="val pos" id="invest-value">₹0</div></div>
+    <div class="metric"><div class="label">Total Gain/Loss</div><div class="val" id="invest-gain">₹0</div><div class="sub" id="invest-gain-pct">0%</div></div>
+  </div>
+  <div class="invest-list" id="invest-list"></div>
+</div>
+
+<!-- RECEIPT SCANNER PAGE -->
+<div class="page" id="page-scanner">
+  <div class="topbar"><div><h1>Receipt Scanner</h1><div class="date">Snap & log instantly</div></div></div>
+  <div class="scanner-drop" id="scanner-drop" onclick="document.getElementById('receipt-file').click()" ondragover="event.preventDefault();this.classList.add('drag-over')" ondragleave="this.classList.remove('drag-over')" ondrop="handleReceiptDrop(event)">
+    <div class="scanner-drop-icon">📸</div>
+    <h3>Tap to upload receipt photo</h3>
+    <p>Or drag and drop — supports JPG, PNG, PDF</p>
+    <input type="file" id="receipt-file" accept="image/*,application/pdf" style="display:none" onchange="handleReceiptFile(event)">
+  </div>
+  <div id="scanner-output" style="display:none">
+    <div class="scanner-result">
+      <h3>✅ Receipt scanned successfully!</h3>
+      <img id="receipt-preview" class="scanner-preview" src="" alt="Receipt">
+      <div class="field-row">
+        <div class="field"><label>Merchant / Description</label><input id="scan-name" placeholder="e.g. Zomato, Supermarket"></div>
+        <div class="field"><label>Amount detected</label><input id="scan-amount" type="number" placeholder="0"></div>
+      </div>
+      <div class="field-row">
+        <div class="field"><label>Category</label><select id="scan-cat"><option>Food</option><option>Transport</option><option>Shopping</option><option>Bills</option><option>Entertainment</option><option>Health</option><option>Other</option></select></div>
+        <div class="field"><label>Date</label><input id="scan-date" type="date"></div>
+      </div>
+      <div class="field"><label>Note</label><input id="scan-note" placeholder="Add a note…"></div>
+      <div style="display:flex;gap:8px;margin-top:1rem">
+        <button class="add-btn" onclick="logScannedReceipt()">Log as Expense ✓</button>
+        <button class="sec-btn" onclick="resetScanner()">Scan Another</button>
+      </div>
+    </div>
+  </div>
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;margin-top:1rem">
+    <h3 style="font-size:14px;font-weight:500;margin-bottom:10px">📋 Recently scanned</h3>
+    <div id="scanned-history" style="font-size:13px;color:var(--text3)">No receipts scanned yet.</div>
+  </div>
+</div>
+
+<!-- INVESTMENT MODAL -->
+<div class="modal-overlay" id="invest-modal-overlay"><div class="modal">
+  <h3 id="invest-modal-title">Add Investment</h3>
+  <div class="field"><label>Investment name</label><input id="inv-name" placeholder="e.g. Nifty 50 Index Fund, Gold ETF"></div>
+  <div class="field-row">
+    <div class="field"><label>Type</label><select id="inv-type"><option>Mutual Fund</option><option>Stock</option><option>Fixed Deposit</option><option>Gold</option><option>Crypto</option><option>Real Estate</option><option>PPF/EPF</option><option>Other</option></select></div>
+    <div class="field"><label>Invested amount</label><input id="inv-invested" type="number" placeholder="50000"></div>
+  </div>
+  <div class="field-row">
+    <div class="field"><label>Current value</label><input id="inv-current" type="number" placeholder="55000"></div>
+    <div class="field"><label>Date invested</label><input id="inv-date" type="date"></div>
+  </div>
+  <div class="field"><label>Notes (optional)</label><input id="inv-note" placeholder="e.g. SIP monthly, broker name"></div>
+  <div class="modal-actions"><button class="cancel" onclick="closeInvestModal()">Cancel</button><button class="confirm" onclick="saveInvestment()">Save</button></div>
+</div></div>
+
 </main>
 </div>
 
@@ -993,6 +1146,10 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
     <button class="drawer-item" onclick="drawerNav('milestones')"><span>◆</span>Milestones</button>
     <button class="drawer-item" onclick="drawerNav('tips')"><span>✦</span>Tips</button>
     <button class="drawer-item" onclick="drawerNav('settings')"><span>⚙</span>Settings</button>
+    <button class="drawer-item" onclick="drawerNav('coach')"><span>🤖</span>AI Coach</button>
+    <button class="drawer-item" onclick="drawerNav('challenges')"><span>🎯</span>Challenges</button>
+    <button class="drawer-item" onclick="drawerNav('investments')"><span>💹</span>Investments</button>
+    <button class="drawer-item" onclick="drawerNav('scanner')"><span>📸</span>Receipt</button>
     <button class="drawer-item" onclick="drawerNav('privacy')"><span>🔒</span>Privacy</button>
     <button class="drawer-item" onclick="drawerNav('terms')"><span>📋</span>Terms</button>
   </div>
@@ -1237,6 +1394,9 @@ function showPage(id,btn){
   if(id==='networth')renderNetWorth();
   if(id==='split')renderSplits();
   if(id==='report')renderReport();
+  if(id==='challenges')renderChallenges();
+  if(id==='investments')renderInvestments();
+  if(id==='scanner')renderScanHistory();
   renderAll();
 }
 
@@ -1933,6 +2093,140 @@ function drawerNav(page){
   setTimeout(()=>showPage(page),150);
 }
 function setGreeting(){const h=new Date().getHours();document.getElementById('greeting').textContent=h<12?'Good morning 🌅':h<17?'Good afternoon ☀️':'Good evening 🌙'}
+
+// ── AI COACH ──────────────────────────────────────────────────────────────────
+let coachHistory=[];
+function buildFinancialContext(){
+  const inc=txs.filter(t=>t.type==='income').reduce((a,t)=>a+t.amount,0);
+  const exp=txs.filter(t=>t.type==='expense').reduce((a,t)=>a+t.amount,0);
+  const savRate=inc>0?Math.round(((inc-exp)/inc)*100):0;
+  const catTotals={};txs.filter(t=>t.type==='expense').forEach(t=>{catTotals[t.cat]=(catTotals[t.cat]||0)+t.amount});
+  const topCats=Object.entries(catTotals).sort((a,b)=>b[1]-a[1]).slice(0,5).map(([c,v])=>`${c}: ${fmt(v)}`).join(', ');
+  const goalsInfo=goals.map(g=>`${g.name} (${Math.round(g.saved/g.target*100)}% complete, ${fmt(g.target-g.saved)} remaining)`).join('; ');
+  const budgetInfo=budgets.map(b=>{const spent=txs.filter(t=>t.type==='expense'&&t.cat===b.cat).reduce((a,t)=>a+t.amount,0);return`${b.cat}: spent ${fmt(spent)} of ${fmt(b.amount)} budget`}).join('; ');
+  return`You are a helpful personal finance AI coach. User's financial data:\n- Total income: ${fmt(inc)}, Total expenses: ${fmt(exp)}, Savings rate: ${savRate}%\n- Top spending: ${topCats||'No data yet'}\n- Goals: ${goalsInfo||'No goals'}\n- Budgets: ${budgetInfo||'No budgets'}\n- Streak: ${streak} days, Transactions: ${txs.length}, Currency: ${currency}\nGive practical, specific, encouraging advice. Be concise and friendly. Max 3 paragraphs.`;
+}
+async function askCoach(question){document.getElementById('coach-input').value=question;await sendCoachMsg()}
+async function sendCoachMsg(){
+  const input=document.getElementById('coach-input');const msg=input.value.trim();if(!msg)return;input.value='';
+  addCoachBubble(msg,'user');coachHistory.push({role:'user',content:msg});
+  const typingId='typing-'+Date.now();const chat=document.getElementById('coach-chat');
+  const typing=document.createElement('div');typing.className='coach-msg';typing.id=typingId;
+  typing.innerHTML=`<div class="coach-avatar">🤖</div><div class="coach-typing"><div class="coach-dot"></div><div class="coach-dot"></div><div class="coach-dot"></div></div>`;
+  chat.appendChild(typing);chat.scrollTop=chat.scrollHeight;
+  try{
+    const response=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:buildFinancialContext(),messages:coachHistory})});
+    const data=await response.json();const reply=data.content?.[0]?.text||'Sorry, could not generate a response.';
+    document.getElementById(typingId)?.remove();addCoachBubble(reply,'ai');coachHistory.push({role:'assistant',content:reply});
+  }catch(e){document.getElementById(typingId)?.remove();addCoachBubble('Could not connect. Please try again.','ai')}
+}
+function addCoachBubble(text,role){
+  const chat=document.getElementById('coach-chat');const div=document.createElement('div');div.className='coach-msg'+(role==='user'?' user':'');
+  div.innerHTML=role==='ai'?`<div class="coach-avatar">🤖</div><div class="coach-bubble ai">${text.replace(/\n/g,'<br>')}</div>`:`<div class="coach-bubble user">${text}</div><div class="coach-avatar" style="background:var(--surface2)">👤</div>`;
+  chat.appendChild(div);chat.scrollTop=chat.scrollHeight;
+}
+
+// ── SAVING CHALLENGES ──────────────────────────────────────────────────────────
+const CHALLENGE_DEFS=[
+  {id:'52week',emoji:'📅',name:'52-Week Challenge',desc:'Save increasing amounts each week. Week 1: ₹100, Week 2: ₹200... Week 52: ₹5,200. Total: ₹1,37,800!',duration:'52 weeks',target:137800},
+  {id:'nospend',emoji:'🚫',name:'No-Spend Weekend',desc:'Go 2 full days without spending on non-essentials. Track your savings each weekend.',duration:'1 weekend',target:500},
+  {id:'10k30',emoji:'💪',name:'₹10,000 in 30 Days',desc:'Save ₹10,000 in 30 days. That\'s ₹333/day. Cut one unnecessary expense daily.',duration:'30 days',target:10000},
+  {id:'latte',emoji:'☕',name:'Latte Factor Challenge',desc:'Skip your daily coffee/snack for 30 days and save that money instead.',duration:'30 days',target:3000},
+  {id:'50percent',emoji:'💰',name:'50% Savings Month',desc:'Save 50% of your income this month. Extreme but life-changing!',duration:'1 month',target:0},
+  {id:'invest100',emoji:'📈',name:'₹100/Day Investment',desc:'Invest ₹100 every single day for 30 days. Build the investing habit.',duration:'30 days',target:3000},
+  {id:'nocredit',emoji:'💳',name:'Cash-Only Week',desc:'Use only cash or UPI balance this week — no credit cards, no EMIs.',duration:'1 week',target:0},
+  {id:'roundup',emoji:'🪙',name:'Round-Up Savings',desc:'Every time you spend, round up to nearest ₹100 and save the difference.',duration:'Ongoing',target:2000},
+];
+let userChallenges=[];
+function loadChallenges(){if(!currentSbUser)return;userChallenges=JSON.parse(localStorage.getItem('sw_challenges_'+currentSbUser.id)||'[]')}
+function saveChallengesData(){if(!currentSbUser)return;localStorage.setItem('sw_challenges_'+currentSbUser.id,JSON.stringify(userChallenges))}
+function renderChallenges(){
+  loadChallenges();
+  const active=userChallenges.filter(c=>c.status==='active');
+  const activeEl=document.getElementById('active-challenges-list'),availEl=document.getElementById('challenges-list');
+  if(!activeEl||!availEl)return;
+  activeEl.innerHTML=active.length?active.map(c=>{
+    const def=CHALLENGE_DEFS.find(d=>d.id===c.id);
+    const pct=def?.target>0?Math.min(100,Math.round((c.saved||0)/def.target*100)):Math.min(100,c.progress||0);
+    const days=Math.max(0,Math.ceil((new Date(c.startDate).getTime()+30*86400000-Date.now())/86400000));
+    return`<div class="challenge-card active-challenge"><div class="challenge-emoji">${def?.emoji||'🎯'}</div><div class="challenge-name">${def?.name||c.id}</div><div class="challenge-meta"><span>${days} days left</span><span>${pct}% done</span></div><div class="challenge-progress"><div class="challenge-fill ${pct>=100?'done':''}" style="width:${pct}%"></div></div><div class="challenge-actions"><button class="sec-btn" onclick="addChallengeProgress('${c.id}')">+ Add progress</button><button class="sec-btn" onclick="abandonChallenge('${c.id}')" style="color:var(--red)">Abandon</button></div></div>`;
+  }).join(''):'<div class="empty"><div>🎯</div>No active challenges. Start one below!</div>';
+  const activeIds=active.map(c=>c.id);
+  availEl.innerHTML=CHALLENGE_DEFS.filter(d=>!activeIds.includes(d.id)).map(d=>`<div class="challenge-card"><div class="challenge-emoji">${d.emoji}</div><div class="challenge-name">${d.name}</div><div class="challenge-desc">${d.desc}</div><div class="challenge-meta"><span>⏱ ${d.duration}</span>${d.target>0?`<span>🎯 ${fmt(d.target)}</span>`:''}</div><div class="challenge-actions"><button class="add-btn" onclick="startChallenge('${d.id}')">Start →</button></div></div>`).join('');
+}
+function startChallenge(id){loadChallenges();if(userChallenges.find(c=>c.id===id&&c.status==='active')){showToast('Already active!');return}userChallenges.push({id,status:'active',startDate:new Date().toISOString(),saved:0,progress:0});saveChallengesData();renderChallenges();showToast('Challenge started! 💪')}
+function addChallengeProgress(id){const amt=parseFloat(prompt('How much did you save/progress? (₹)')||'0');if(!amt)return;loadChallenges();const c=userChallenges.find(x=>x.id===id);if(c){c.saved=(c.saved||0)+amt;c.progress=Math.min(100,(c.progress||0)+5)}const def=CHALLENGE_DEFS.find(d=>d.id===id);saveChallengesData();renderChallenges();if(def?.target>0&&c.saved>=def.target){c.status='completed';saveChallengesData();celebrate('Challenge Complete! 🏆','You finished the '+def.name+'!','🏆')}else showToast(fmt(amt)+' progress added ✓')}
+function abandonChallenge(id){openConfirm('Abandon Challenge?','Your progress will be lost.',()=>{loadChallenges();userChallenges=userChallenges.filter(c=>c.id!==id);saveChallengesData();renderChallenges();showToast('Challenge abandoned')})}
+
+// ── INVESTMENTS ───────────────────────────────────────────────────────────────
+let investments=[];
+const INVEST_ICONS={'Mutual Fund':'📊','Stock':'📈','Fixed Deposit':'🏦','Gold':'🥇','Crypto':'₿','Real Estate':'🏠','PPF/EPF':'🛡','Other':'💼'};
+function loadInvestments(){if(!currentSbUser)return;investments=JSON.parse(localStorage.getItem('sw_investments_'+currentSbUser.id)||'[]')}
+function saveInvestmentsData(){if(!currentSbUser)return;localStorage.setItem('sw_investments_'+currentSbUser.id,JSON.stringify(investments))}
+function openInvestModal(){['inv-name','inv-invested','inv-current','inv-note'].forEach(i=>document.getElementById(i).value='');document.getElementById('inv-date').value=new Date().toISOString().slice(0,10);document.getElementById('invest-modal-overlay').classList.add('open')}
+function closeInvestModal(){document.getElementById('invest-modal-overlay').classList.remove('open')}
+function saveInvestment(){
+  const name=document.getElementById('inv-name').value.trim(),type=document.getElementById('inv-type').value,invested=parseFloat(document.getElementById('inv-invested').value)||0,current=parseFloat(document.getElementById('inv-current').value)||0,date=document.getElementById('inv-date').value,note=document.getElementById('inv-note').value.trim();
+  if(!name||!invested){showToast('Fill name & amount');return}
+  loadInvestments();investments.push({id:Date.now().toString(),name,type,invested,current:current||invested,date,note});
+  saveInvestmentsData();renderInvestments();closeInvestModal();showToast('Investment added ✓');
+}
+function renderInvestments(){
+  loadInvestments();const el=document.getElementById('invest-list');if(!el)return;
+  const totalInvested=investments.reduce((a,i)=>a+i.invested,0),totalCurrent=investments.reduce((a,i)=>a+i.current,0),totalGain=totalCurrent-totalInvested,gainPct=totalInvested>0?((totalGain/totalInvested)*100).toFixed(1):0;
+  const tv=document.getElementById('invest-total'),cv=document.getElementById('invest-value'),gv=document.getElementById('invest-gain'),gp=document.getElementById('invest-gain-pct');
+  if(tv)tv.textContent=fmt(totalInvested);if(cv)cv.textContent=fmt(totalCurrent);
+  if(gv){gv.textContent=fmt(Math.abs(totalGain));gv.className='val '+(totalGain>=0?'pos':'neg')}if(gp)gp.textContent=(totalGain>=0?'+':'-')+gainPct+'%';
+  if(!investments.length){el.innerHTML='<div class="empty"><div>💹</div>No investments yet. Add your first!</div>';return}
+  el.innerHTML=investments.map(inv=>{const gain=inv.current-inv.invested,gp=inv.invested>0?((gain/inv.invested)*100).toFixed(1):0;const icon=INVEST_ICONS[inv.type]||'💼';
+    return`<div class="invest-item"><div class="invest-icon">${icon}</div><div class="invest-info"><div class="invest-name">${inv.name}</div><div class="invest-type">${inv.type}${inv.date?' · Since '+inv.date:''}</div>${inv.note?`<div style="font-size:11px;color:var(--text3);margin-top:2px">${inv.note}</div>`:''}</div><div class="invest-right"><div class="invest-value">${fmt(inv.current)}</div><div class="invest-gain ${gain>=0?'pos':'neg'}">${gain>=0?'+':'-'}${fmt(Math.abs(gain))} (${gp}%)</div><div style="display:flex;gap:4px;margin-top:6px;justify-content:flex-end"><button onclick="editInvestment('${inv.id}')" style="font-size:11px;padding:3px 8px;border:1px solid var(--border);border-radius:4px;background:none;cursor:pointer;color:var(--text);font-family:'DM Sans',sans-serif">Update</button><button onclick="deleteInvestment('${inv.id}')" style="font-size:11px;padding:3px 8px;border:1px solid rgba(181,50,42,.3);border-radius:4px;background:none;cursor:pointer;color:var(--red);font-family:'DM Sans',sans-serif">✕</button></div></div></div>`;
+  }).join('');
+}
+function editInvestment(id){loadInvestments();const inv=investments.find(x=>x.id===id);if(!inv)return;const v=parseFloat(prompt('Update current value for "'+inv.name+'":', inv.current)||inv.current);if(!v||isNaN(v))return;inv.current=v;saveInvestmentsData();renderInvestments();showToast('Value updated ✓')}
+function deleteInvestment(id){openConfirm('Delete Investment?','This cannot be undone.',()=>{loadInvestments();investments=investments.filter(i=>i.id!==id);saveInvestmentsData();renderInvestments();showToast('Investment removed')})}
+
+// ── RECEIPT SCANNER ───────────────────────────────────────────────────────────
+let scannedReceipts=[];
+function handleReceiptFile(e){const file=e.target.files[0];if(!file)return;processReceiptFile(file)}
+function handleReceiptDrop(e){e.preventDefault();document.getElementById('scanner-drop').classList.remove('drag-over');const file=e.dataTransfer.files[0];if(file)processReceiptFile(file)}
+async function processReceiptFile(file){
+  const reader=new FileReader();
+  reader.onload=async ev=>{
+    const base64=ev.target.result;
+    document.getElementById('receipt-preview').src=base64;
+    document.getElementById('scanner-output').style.display='block';
+    document.getElementById('scanner-drop').style.display='none';
+    document.getElementById('scan-date').value=new Date().toISOString().slice(0,10);
+    showToast('Scanning receipt… 🔍');
+    try{
+      const imgData=base64.split(',')[1];const mediaType=file.type||'image/jpeg';
+      const response=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:300,messages:[{role:'user',content:[{type:'image',source:{type:'base64',media_type:mediaType,data:imgData}},{type:'text',text:'Look at this receipt. Extract: 1) merchant/store name 2) total amount. Reply ONLY as JSON: {"merchant":"name","amount":123.45}'}]}]})});
+      const data=await response.json();const text=data.content?.[0]?.text||'{}';
+      const parsed=JSON.parse(text.replace(/```json|```/g,'').trim());
+      if(parsed.merchant)document.getElementById('scan-name').value=parsed.merchant;
+      if(parsed.amount)document.getElementById('scan-amount').value=Math.round(parsed.amount);
+      const m=(parsed.merchant||'').toLowerCase();const catMap={zomato:'Food',swiggy:'Food',uber:'Transport',ola:'Transport',amazon:'Shopping',flipkart:'Shopping',pharmacy:'Health',medical:'Health',petrol:'Transport'};
+      const autoCat=Object.entries(catMap).find(([k])=>m.includes(k));
+      if(autoCat)document.getElementById('scan-cat').value=autoCat[1];
+      showToast('Receipt scanned! ✅');
+    }catch(err){showToast('Scan done — please verify details')}
+  };reader.readAsDataURL(file);
+}
+async function logScannedReceipt(){
+  const name=document.getElementById('scan-name').value.trim(),amount=parseFloat(document.getElementById('scan-amount').value)||0,cat=document.getElementById('scan-cat').value,date=document.getElementById('scan-date').value,note=document.getElementById('scan-note').value.trim();
+  if(!name||!amount){showToast('Fill name & amount');return}
+  const{data,error}=await sb.from('transactions').insert({user_id:currentSbUser.id,name,amount,type:'expense',category:cat,note:note||'Receipt scan',recurring:false}).select().single();
+  if(error){showToast('Error: '+error.message);return}
+  txs.push({id:data.id,name,amount,type:'expense',cat,note:note||'Receipt scan',recurring:false,created_at:data.created_at});
+  scannedReceipts.unshift({name,amount,cat,date});if(scannedReceipts.length>10)scannedReceipts.pop();
+  renderScanHistory();streak++;persist();buildMonthOptions();renderSummary();renderTxs();
+  resetScanner();showToast(name+' logged ✓');
+}
+function resetScanner(){document.getElementById('scanner-output').style.display='none';document.getElementById('scanner-drop').style.display='block';document.getElementById('receipt-file').value=''}
+function renderScanHistory(){
+  const el=document.getElementById('scanned-history');if(!el)return;
+  el.innerHTML=scannedReceipts.length?scannedReceipts.map(r=>`<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);font-size:13px"><span>${r.name} <span style="color:var(--text3)">· ${r.cat}</span></span><span style="font-weight:500">${fmt(r.amount)}</span></div>`).join(''):'<div style="color:var(--text3)">No receipts scanned yet.</div>';
+}
 
 // ── RENDER ALL ────────────────────────────────────────────────────────────────
 function renderAll(){renderSummary();renderGoals();renderTxs();renderTemplateBar()}
