@@ -441,6 +441,9 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .mobile-nav-item{display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 8px;cursor:pointer;font-size:10px;color:var(--text3);transition:color .15s;border:none;background:none;font-family:'DM Sans',sans-serif}
 .mobile-nav-item.active{color:var(--text)}
 .mobile-nav-item span{font-size:18px}
+.drawer-item{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:18px 8px;background:var(--surface);border:none;cursor:pointer;font-size:12px;color:var(--text2);font-family:'DM Sans',sans-serif;transition:background .15s;width:100%}
+.drawer-item:hover,.drawer-item:active{background:var(--surface2);color:var(--text)}
+.drawer-item span{font-size:22px}
 </style>
 </head>
 <body>
@@ -879,7 +882,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
     <ul style="padding-left:1.25rem;margin-bottom:1rem">
       <li style="margin-bottom:.4rem"><strong style="color:var(--text)">App:</strong> Savewise Pro</li>
       <li style="margin-bottom:.4rem"><strong style="color:var(--text)">Website:</strong> https://save-wise-pro.github.io/Save-Wise</li>
-      <li style="margin-bottom:.4rem"><strong style="color:var(--text)">Email:</strong> savewisepro@gmail.com</li>
+      <li style="margin-bottom:.4rem"><strong style="color:var(--text)">Email:</strong> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7506140310021c061005071a351218141c195b161a18">[email&#160;protected]</a></li>
     </ul>
 
     <div style="margin-top:2rem;padding-top:1rem;border-top:1px solid var(--border);font-size:12px;color:var(--text3)">
@@ -941,7 +944,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
     <h2 style="font-family:'DM Serif Display',serif;font-size:18px;font-weight:400;color:var(--text);margin:1.5rem 0 .75rem">11. Contact</h2>
     <p style="margin-bottom:.5rem">For any questions regarding these Terms:</p>
     <ul style="padding-left:1.25rem;margin-bottom:1rem">
-      <li style="margin-bottom:.4rem"><strong style="color:var(--text)">Email:</strong> savewisepro@gmail.com</li>
+      <li style="margin-bottom:.4rem"><strong style="color:var(--text)">Email:</strong> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2a594b5c4f5d43594f5a58456a4d474b434604494547">[email&#160;protected]</a></li>
       <li style="margin-bottom:.4rem"><strong style="color:var(--text)">Website:</strong> https://save-wise-pro.github.io/Save-Wise</li>
     </ul>
 
@@ -961,7 +964,44 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
   <button class="mobile-nav-item" onclick="showPage('transactions',this)"><span>↕</span>Txns</button>
   <button class="mobile-nav-item" onclick="showPage('budget',this)"><span>💰</span>Budget</button>
   <button class="mobile-nav-item" onclick="showPage('analytics',this)"><span>▦</span>Stats</button>
+  <button class="mobile-nav-item" onclick="openMoreDrawer()"><span>⋯</span>More</button>
 </nav>
+
+<!-- MORE DRAWER (slide up) -->
+<div id="more-overlay" onclick="closeMoreDrawer()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:300;backdrop-filter:blur(2px)"></div>
+<div id="more-drawer" style="display:none;position:fixed;bottom:0;left:0;right:0;background:var(--surface);border-radius:20px 20px 0 0;border-top:1px solid var(--border);z-index:301;padding:0 0 100px;transform:translateY(100%);transition:transform .3s ease">
+  <!-- Handle bar -->
+  <div style="display:flex;justify-content:center;padding:12px 0 4px">
+    <div style="width:40px;height:4px;border-radius:2px;background:var(--border2)"></div>
+  </div>
+  <!-- User info -->
+  <div style="display:flex;align-items:center;gap:12px;padding:12px 20px 16px;border-bottom:1px solid var(--border)">
+    <div class="avatar" id="drawer-avatar" style="width:40px;height:40px;font-size:15px">?</div>
+    <div>
+      <div id="drawer-username" style="font-size:15px;font-weight:500">Guest</div>
+      <div id="drawer-email" style="font-size:12px;color:var(--text3)">—</div>
+    </div>
+    <div style="margin-left:auto;font-size:13px;color:var(--text3)" id="drawer-streak">1 day 🔥</div>
+  </div>
+  <!-- Menu grid -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);margin-top:1px">
+    <button class="drawer-item" onclick="drawerNav('bills')"><span>📄</span>Bills</button>
+    <button class="drawer-item" onclick="drawerNav('emi')"><span>🏦</span>EMI Tracker</button>
+    <button class="drawer-item" onclick="drawerNav('networth')"><span>💎</span>Net Worth</button>
+    <button class="drawer-item" onclick="drawerNav('split')"><span>🤝</span>Split</button>
+    <button class="drawer-item" onclick="drawerNav('report')"><span>📊</span>Weekly Report</button>
+    <button class="drawer-item" onclick="drawerNav('milestones')"><span>◆</span>Milestones</button>
+    <button class="drawer-item" onclick="drawerNav('tips')"><span>✦</span>Tips</button>
+    <button class="drawer-item" onclick="drawerNav('settings')"><span>⚙</span>Settings</button>
+    <button class="drawer-item" onclick="drawerNav('privacy')"><span>🔒</span>Privacy</button>
+    <button class="drawer-item" onclick="drawerNav('terms')"><span>📋</span>Terms</button>
+  </div>
+  <!-- Bottom actions -->
+  <div style="display:flex;gap:8px;padding:14px 16px">
+    <button onclick="toggleTheme();closeMoreDrawer()" style="flex:1;padding:10px;border:1px solid var(--border);border-radius:var(--radius-sm);background:transparent;color:var(--text);font-size:13px;cursor:pointer;font-family:'DM Sans',sans-serif"><span id="drawer-theme-icon">◑</span> Theme</button>
+    <button onclick="doLogout()" style="flex:1;padding:10px;border:1px solid rgba(181,50,42,.3);border-radius:var(--radius-sm);background:transparent;color:var(--red);font-size:13px;cursor:pointer;font-family:'DM Sans',sans-serif">⎋ Sign out</button>
+  </div>
+</div>
 
 <!-- ALL MODALS -->
 <!-- GOAL MODAL -->
@@ -1095,7 +1135,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 
 <div class="toast" id="toast"></div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ── SUPABASE ──────────────────────────────────────────────────────────────────
 const { createClient } = supabase;
 const sb = createClient(
@@ -1859,7 +1899,39 @@ async function doLogout(){
 async function changeDisplayName(){const name=prompt('Enter new display name:',currentSbUser?.user_metadata?.full_name||'');if(!name?.trim())return;await sb.auth.updateUser({data:{full_name:name.trim()}});updateUserUI({name:name.trim(),email:currentSbUser.email});renderSettings();showToast('Name updated ✓')}
 async function changePassword(){const np=prompt('Enter new password (min. 6 chars):');if(!np||np.length<6){showToast('Password too short');return}const{error}=await sb.auth.updateUser({password:np});if(error){showToast('Error: '+error.message);return}showToast('Password changed ✓')}
 
-// ── GREETING ──────────────────────────────────────────────────────────────────
+// ── MORE DRAWER ───────────────────────────────────────────────────────────────
+function openMoreDrawer(){
+  const overlay=document.getElementById('more-overlay');
+  const drawer=document.getElementById('more-drawer');
+  overlay.style.display='block';
+  drawer.style.display='block';
+  setTimeout(()=>drawer.style.transform='translateY(0)',10);
+  // Sync user info
+  const user=currentSbUser;
+  if(user){
+    const meta=user.user_metadata||{};
+    const name=meta.full_name||user.email?.split('@')[0]||'User';
+    const initials=name.split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();
+    const da=document.getElementById('drawer-avatar');
+    const du=document.getElementById('drawer-username');
+    const de=document.getElementById('drawer-email');
+    const ds=document.getElementById('drawer-streak');
+    if(da)da.textContent=initials;
+    if(du)du.textContent=name;
+    if(de)de.textContent=user.email;
+    if(ds)ds.textContent=streak+' day'+(streak!==1?'s':'')+' 🔥';
+  }
+}
+function closeMoreDrawer(){
+  const overlay=document.getElementById('more-overlay');
+  const drawer=document.getElementById('more-drawer');
+  drawer.style.transform='translateY(100%)';
+  setTimeout(()=>{overlay.style.display='none';drawer.style.display='none'},300);
+}
+function drawerNav(page){
+  closeMoreDrawer();
+  setTimeout(()=>showPage(page),150);
+}
 function setGreeting(){const h=new Date().getHours();document.getElementById('greeting').textContent=h<12?'Good morning 🌅':h<17?'Good afternoon ☀️':'Good evening 🌙'}
 
 // ── RENDER ALL ────────────────────────────────────────────────────────────────
@@ -1872,30 +1944,38 @@ document.addEventListener('keydown',e=>{
   if(e.key==='g'||e.key==='G')openGoalModal();
   if(e.key==='Escape')document.querySelectorAll('.modal-overlay.open').forEach(m=>m.classList.remove('open'));
 });
+
 // ── INIT ──────────────────────────────────────────────────────────────────────
 applyTheme();
-
-(async () => {
-  const { data: { session } } = await sb.auth.getSession();
-  if (session && session.user) {
-    currentSbUser = session.user;
-    await bootApp(session.user);
-  } else {
-    document.getElementById('auth-screen').classList.remove('hidden');
-  }
-
-  // Listen for auth changes (e.g. email confirmation)
-  sb.auth.onAuthStateChange(async (event, session) => {
-    if (event === 'SIGNED_IN' && session && !currentSbUser) {
-      currentSbUser = session.user;
-      await bootApp(session.user);
-    }
-    if (event === 'SIGNED_OUT') {
-      currentSbUser = null;
-      document.getElementById('auth-screen').classList.remove('hidden');
-    }
+(async()=>{
+  const{data:{session}}=await sb.auth.getSession();
+  if(session?.user){currentSbUser=session.user;await bootApp(session.user)}
+  else document.getElementById('auth-screen').classList.remove('hidden');
+  sb.auth.onAuthStateChange(async(event,session)=>{
+    if(event==='SIGNED_IN'&&session&&!currentSbUser){currentSbUser=session.user;await bootApp(session.user)}
+    if(event==='SIGNED_OUT'){currentSbUser=null;document.getElementById('auth-screen').classList.remove('hidden')}
   });
 })();
 </script>
+<!-- LEGAL FOOTER LINKS — required for Google AdSense -->
+<div style="text-align:center;padding:6px 8px;font-size:11px;color:var(--text3);background:var(--surface);border-top:1px solid var(--border);position:fixed;bottom:66px;left:0;right:0;z-index:145;display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap">
+  <button onclick="showPage('privacy')" style="background:none;border:none;cursor:pointer;color:var(--text3);font-size:11px;font-family:'DM Sans',sans-serif;padding:0">🔒 Privacy Policy</button>
+  <span style="color:var(--border2)">·</span>
+  <button onclick="showPage('terms')" style="background:none;border:none;cursor:pointer;color:var(--text3);font-size:11px;font-family:'DM Sans',sans-serif;padding:0">📋 Terms of Service</button>
+  <span style="color:var(--border2)">·</span>
+  <span>© 2026 Savewise Pro</span>
+</div>
+
+<!-- GOOGLE ADSENSE FOOTER BANNER -->
+<div class="ad-footer" id="ad-footer">
+  <span class="ad-label">Advertisement</span>
+  <!-- Replace ca-pub-XXXXXXXXXX with your Publisher ID and XXXXXXXXXX with your Ad Slot ID -->
+  <ins class="adsbygoogle"
+    style="display:inline-block;width:320px;height:50px"
+    data-ad-client="ca-pub-XXXXXXXXXX"
+    data-ad-slot="XXXXXXXXXX">
+  </ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
 </body>
 </html>
